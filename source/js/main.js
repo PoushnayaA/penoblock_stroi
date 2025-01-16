@@ -8,6 +8,54 @@ window.addEventListener('DOMContentLoaded', () => {
 
   iosVhFix();
 
+  const images = [
+    '../img/main-slider/slide-1.jpg',
+    '../img/main-slider/slide-2.jpg',
+    '../img/main-slider/slide-3.jpg',
+    '../img/projects/project-1/1-min.jpg',
+    '../img/projects/project-1/2-min.jpg',
+    '../img/projects/project-1/3-min.jpg',
+    '../img/projects/project-2/1-min.jpg',
+    '../img/projects/project-2/2-min.jpg',
+    '../img/projects/project-2/3-min.jpg',
+    '../img/projects/project-3/1-min.jpg',
+    '../img/projects/project-3/2-min.jpg',
+    '../img/projects/project-3/3-min.jpg',
+    '../img/projects/project-4/1-min.jpg',
+    '../img/projects/project-4/2-min.jpg',
+    '../img/projects/project-4/3-min.jpg',
+    '../img/projects/project-5/1-min.jpg',
+    '../img/projects/project-5/2-min.jpg',
+    '../img/projects/project-5/3-min.jpg',
+];
+
+// Функция для предварительной загрузки изображений
+function preloadImages(imageArray) {
+  return Promise.all(imageArray.map(src => {
+      return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+      });
+  }));
+}
+
+// Предварительная загрузка изображений перед инициализацией Swiper
+preloadImages(images).then(() => {
+  // Все изображения загружены, инициализируем Swiper
+  new Swiper('.js-hero-slider', {
+      loop: true,
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+  });
+}).catch(error => {
+  console.error('Ошибка при загрузке изображений:', error);
+});
+
+
   new Swiper('.js-hero-slider', {
     loop: true,
     navigation: {
