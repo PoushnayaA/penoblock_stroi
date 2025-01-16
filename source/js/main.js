@@ -14,6 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
   });
 
   const swipers = document.querySelectorAll('.js-results-swiper');
@@ -23,6 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
           navigation: {
             nextEl: swiperElement.querySelector('.swiper-button-next'),
             prevEl: swiperElement.querySelector('.swiper-button-prev'),
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
           },
       });
   });
