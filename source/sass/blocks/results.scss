@@ -130,6 +130,16 @@
     @each $property, $value in $font-title {
         #{$property}: $value;
     }
+
+    font-size: 24px;
+
+    @include vp-768 {
+        font-size: 30px;
+    }
+
+    @include vp-1024 {
+        font-size: 34px;
+    }
 }
 
 .result__name {
@@ -137,6 +147,16 @@
 
     @each $property, $value in $font-title {
         #{$property}: $value;
+    }
+
+    font-size: 24px;
+
+    @include vp-768 {
+        font-size: 30px;
+    }
+
+    @include vp-1024 {
+        font-size: 34px;
     }
 
     margin: 10px 0 0;

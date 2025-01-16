@@ -2451,6 +2451,17 @@ html {
   font-size: 36px;
   font-weight: 700;
   line-height: 40px;
+  font-size: 24px;
+}
+@media (min-width: 768px) {
+  .result__title {
+    font-size: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .result__title {
+    font-size: 34px;
+  }
 }
 
 .result__name {
@@ -2459,7 +2470,18 @@ html {
   font-size: 36px;
   font-weight: 700;
   line-height: 40px;
+  font-size: 24px;
   margin: 10px 0 0;
+}
+@media (min-width: 768px) {
+  .result__name {
+    font-size: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .result__name {
+    font-size: 34px;
+  }
 }
 
 .result__text {
