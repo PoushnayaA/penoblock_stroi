@@ -1,0 +1,52 @@
+footer {
+    background-color: $color-default-black;
+    color: $color-default-white;
+}
+
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+
+    @include vp-768 {
+        width: max-content;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 20px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.footer__item {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    @each $property, $value in $font-link {
+        #{$property}: $value;
+    }
+
+    a {
+        transition: all 0.3s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: 70%;
+        }
+    }
+}
+
+.footer__item--main {
+    order: -1;
+
+    @include vp-1024 {
+        order: 0;
+    }
+}

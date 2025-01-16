@@ -1,0 +1,136 @@
+.header {
+    padding: 16px 0;
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @include vp-768 {
+            gap: 40px;
+            grid-template-columns: 2fr 3fr;
+        }
+    }
+}
+
+.header__text {
+    display: flex;
+    align-items: end;
+    gap: 25px;
+
+    @include vp-768 {
+        gap: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $color-default-black;
+    }
+}
+
+.header__logo {
+    @each $property, $value in $font-logo {
+        #{$property}: $value;
+    }
+
+    font-size: 28px;
+
+    @include vp-768 {
+        font-size: 32px;
+    }
+
+    line-height: 32px;
+}
+
+.header__nav {
+    display: none;
+
+    @include vp-768 {
+        display: block;
+    }
+}
+
+.header__nav-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+    list-style-type: none;
+
+    @each $property, $value in $font-text {
+        #{$property}: $value;
+    }
+}
+
+.header__nav-link {
+    transition: 0.2s;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 60%;
+        transition: 0.2s;
+    }
+}
+
+.header__links {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    align-items: center;
+
+    a {
+
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: 60%;
+        }
+    }
+}
+
+.header__contact-info {
+    display: flex;
+    align-items: end;
+    gap: 20px;
+
+    @each $property, $value in $font-text {
+        #{$property}: $value;
+    }
+}
+
+.header__email-link {
+    display: none;
+
+    @include vp-1024 {
+        display: inline;
+    }
+
+    @each $property, $value in $font-link {
+        #{$property}: $value;
+    }
+
+    font-size: 12px;
+
+    @include vp-768 {
+        font-size: 17px;
+    }
+}
+
+.header__phone-link {
+    @each $property, $value in $font-link {
+        #{$property}: $value;
+    }
+
+    font-size: 12px;
+
+    @include vp-768 {
+        font-size: 17px;
+    }
+}
+
+.header__socials {
+    display: none;
+
+    @include vp-1024 {
+        display: flex;
+        gap: 10px;
+        align-items: end;
+    }
+}

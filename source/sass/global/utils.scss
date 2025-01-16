@@ -17,14 +17,6 @@
   }
 }
 
-.rouble {
-  font-family: $ff-rouble;
-  /* stylelint-disable */
-  text-transform: lowercase !important;
-  font-weight: 400 !important;
-  /* stylelint-enable */
-}
-
 .visually-hidden {
   position: absolute;
 
@@ -68,4 +60,95 @@
 
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
+}
+
+.content {
+  padding: 30px 0;
+
+  @include vp-768 {
+    padding: 60px 0;
+  }
+
+  color: $color-default-black;
+}
+
+.content__title-wrapper {
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-default-black;
+
+  @include vp-768 {
+    padding-bottom: 18px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 20px;
+
+  @include vp-768 {
+    margin-bottom: 40px;
+  }
+}
+
+.dark .content__title-wrapper {
+  border-bottom: 1px solid $color-default-white;
+  margin-bottom: 20px;
+
+  @include vp-768 {
+    margin-bottom: 40px;
+  }
+}
+
+.content__title-number {
+  @each $property, $value in $font-decoration {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+    @each $property, $value in $font-decoration-desktop {
+      #{$property}: $value;
+    }
+  }
+}
+
+.content__title {
+  margin: 0;
+
+  @each $property, $value in $font-decoration {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+    @each $property, $value in $font-decoration-desktop {
+      #{$property}: $value;
+    }
+  }
+}
+
+.dark {
+  background-color: $color-green;
+  color: $color-default-white;
+}
+
+.hero.content {
+  padding: 0;
+
+  @include vp-768 {
+    padding: 60px 0;
+  }
+}
+
+.simple-text {
+  @each $property, $value in $font-text {
+    #{$property}: $value;
+}
+
+@include vp-768 {
+  font-size: 20px;
+  line-height: 32px,
+}
+}
+html {
+  scroll-behavior: smooth;
 }

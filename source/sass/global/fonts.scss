@@ -1,8 +1,26 @@
 @font-face {
   font-style: normal;
   font-weight: 400;
-  font-family: "";
+  font-family: "exo2";
 
   font-display: swap;
-  src: url("../fonts/.woff2") format("woff2");
+  src: url("../fonts/exo2-regular.woff2") format("woff2"), url("../fonts/exo2-regular.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 500;
+  font-family: "exo2";
+
+  font-display: swap;
+  src: url("../fonts/exo2-medium.woff2") format("woff2"), url("../fonts/exo2-medium.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: "exo2";
+
+  font-display: swap;
+  src: url("../fonts/exo2-bold.woff2") format("woff2"), url("../fonts/exo2-bold.woff") format("woff");
 }

@@ -1,21 +1,108 @@
-import {iosVhFix} from './utils/ios-vh-fix';
-import {initModals} from './modules/modals/init-modals';
-import {Form} from './modules/form-validate/form';
-
+import { iosVhFix } from './utils/ios-vh-fix';
+import { initModals } from './modules/modals/init-modals';
+import { Form } from './modules/form-validate/form';
+import Swiper from './vendor/swiper';
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  // Utils
-  // ---------------------------------
-
   iosVhFix();
 
-  // Modules
-  // ---------------------------------
+  new Swiper('.js-hero-slider', {
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 
-  // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
-  // в load следует добавить скрипты, не участвующие в работе первого экрана
+  const swipers = document.querySelectorAll('.js-results-swiper');
+  swipers.forEach((swiperElement) => {
+      new Swiper(swiperElement, {
+          loop: true,
+          navigation: {
+            nextEl: swiperElement.querySelector('.swiper-button-next'),
+            prevEl: swiperElement.querySelector('.swiper-button-prev'),
+          },
+      });
+  });
+
+
+  const advantagesItems = document.querySelectorAll('.advantages__item');
+  const headers = document.querySelectorAll('.price__title-wrapper');
+
+  function changeHeight(items, adaptive) {
+    items.forEach((item) => {
+      item.style.height = 'auto';
+    });
+    if (adaptive) {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 1024) {
+        return
+      } else {
+        let maxHeight = 0;
+
+        items.forEach((item) => {
+          const itemHeight = item.offsetHeight;
+          if (itemHeight > maxHeight) {
+            maxHeight = itemHeight;
+          }
+        });
+
+        items.forEach((item) => {
+          item.style.height = `${maxHeight}px`;
+        });
+      }
+
+    } else {
+      let maxHeight = 0;
+
+      items.forEach((item) => {
+        const itemHeight = item.offsetHeight;
+        if (itemHeight > maxHeight) {
+          maxHeight = itemHeight;
+        }
+      });
+
+
+      items.forEach((item) => {
+        item.style.height = `${maxHeight}px`;
+      });
+    }
+  }
+
+  window.addEventListener('load', () => {
+    changeHeight(advantagesItems, false);
+    changeHeight(headers, true);
+});
+
+window.addEventListener('resize', () => {
+    changeHeight(advantagesItems, false);
+    changeHeight(headers, true);
+});
+
+
+const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Удаляем активный класс у всех кнопок и контента
+            buttons.forEach(btn => btn.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Добавляем активный класс к нажатой кнопке и соответствующему контенту
+            button.classList.add('active');
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+
+
+
+
+
   window.addEventListener('load', () => {
     initModals();
     const form = new Form();
@@ -24,27 +111,3 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ---------------------------------
-
-// ❗❗❗ обязательно установите плагины eslint, stylelint, editorconfig в редактор кода.
-
-// привязывайте js не на классы, а на дата атрибуты (data-validate)
-
-// вместо модификаторов .block--active используем утилитарные классы
-// .is-active || .is-open || .is-invalid и прочие (обязателен нейминг в два слова)
-// .select.select--opened ❌ ---> [data-select].is-open ✅
-
-// выносим все в дата атрибуты
-// url до иконок пинов карты, настройки автопрокрутки слайдера, url к json и т.д.
-
-// для адаптивного JS используется matchMedia и addListener
-// const breakpoint = window.matchMedia(`(min-width:1024px)`);
-// const breakpointChecker = () => {
-//   if (breakpoint.matches) {
-//   } else {
-//   }
-// };
-// breakpoint.addListener(breakpointChecker);
-// breakpointChecker();
-
-// используйте .closest(el)

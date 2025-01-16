@@ -1,0 +1,233 @@
+.tabs {
+    margin-top: 20px;
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    @include vp-1024 {
+        margin-top: 40px;
+        justify-content: space-between;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            height: 1.5px;
+            left: 0;
+            width: 100%;
+            background-color: $color-default-black-40;
+            z-index: 1;
+        }
+    }
+
+    position: relative;
+}
+
+.tab-button {
+    padding: 10px 10px;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    background-color: transparent;
+    cursor: pointer;
+    color: $color-default-black-40;
+
+    text-transform: uppercase;
+
+    @each $property, $value in $font-tabs {
+        #{$property}: $value;
+    }
+
+    border: none;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    @include vp-1024 {
+        padding: 10px 20px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            height: 1.5px;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            z-index: 1;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+
+.tab-button.active {
+    position: relative;
+    color: $color-default-black;
+
+    @include vp-1024 {
+        &::after {
+            background-color: $color-default-black;
+        }
+    }
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.result {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+
+    @include vp-1024 {
+        margin-top: 40px;
+        grid-template-columns: 2fr 3fr;
+        gap: 40px;
+    }
+}
+
+.result__slider {
+    height: 100%;
+    min-height: unset;
+    max-height: 350px;
+    height: 350px;
+
+    @include vp-1024 {
+        max-height: unset;
+        height: 680px;
+    }
+
+    .hero-slider__slide-image {
+        height: 100%;
+        filter: brightness(85%);
+
+    }
+
+    .hero-slider__slide-image {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.result__title {
+    margin: 0 0 10px;
+
+    @each $property, $value in $font-title {
+        #{$property}: $value;
+    }
+}
+
+.result__name {
+    text-transform: uppercase;
+
+    @each $property, $value in $font-title {
+        #{$property}: $value;
+    }
+
+    margin: 10px 0 0;
+}
+
+.result__text {
+    margin: 15px 0;
+
+    @include vp-1024 {
+        margin: 35px 0;
+    }
+
+    @each $property, $value in $font-description {
+        #{$property}: $value;
+    }
+}
+
+.result__price-list {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+
+    @include vp-768 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    margin-bottom: 20px;
+}
+
+.result__price-item {
+    @each $property, $value in $font-tabs {
+        #{$property}: $value;
+    }
+
+    line-height: 20px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .bold {
+        @each $property, $value in $font-tabs {
+            #{$property}: $value;
+        }
+
+        line-height: 20px;
+        font-size: 15px;
+    }
+
+    .grey {
+        opacity: 0.4;
+    }
+}
+
+.result__text-wrapper {
+    @include vp-1024 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.result__link {
+    border-radius: 4px;
+    margin-top: auto;
+    margin-bottom: 24px;
+    padding: 12px;
+    color: $color-default-white;
+    border: 1px solid $color-default-white;
+    background-color: $color-default-black;
+    width: 100%;
+    display: block;
+    margin-right: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 60%;
+        transition: 0.3s;
+    }
+
+    @each $property, $value in $font-button {
+        #{$property}: $value;
+    }
+
+    text-align: center;
+    transition: 0.3s;
+
+    @include vp-1024 {
+        margin-bottom: 0;
+        margin-top: auto;
+    }
+}

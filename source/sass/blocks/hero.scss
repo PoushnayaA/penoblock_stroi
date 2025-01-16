@@ -1,0 +1,255 @@
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include vp-768 {
+        grid-template-columns: 2fr 3fr;
+        gap: 40px;
+    }
+
+
+}
+
+
+.hero-content {
+    position: absolute;
+    z-index: 2;
+    padding: 22px;
+    max-width: 70%;
+
+
+
+    @include vp-768 {
+        position: relative;
+        padding: 0;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.hero-content__title {
+    margin: 0;
+
+    @each $property, $value in $font-header {
+        #{$property}: $value;
+    }
+
+    color: $color-default-white;
+
+    @include vp-768 {
+        color: $color-default-black;
+    }
+}
+
+.hero-content__text {
+    @each $property, $value in $font-description {
+        #{$property}: $value;
+    }
+
+    color: $color-default-white;
+
+    @include vp-768 {
+        color: $color-default-black;
+    }
+}
+
+.hero__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include vp-768 {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
+
+    &--desktop {
+        display: none;
+
+        @include vp-768 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+    &--mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @include vp-768 {
+            display: none;
+        }
+    }
+}
+
+.hero-content__button {
+    border-radius: 4px;
+    padding: 12px;
+    color: $color-default-white;
+    border: 1px solid $color-default-white;
+    background-color: transparent;
+    width: 100%;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: $color-default-white;
+        background-color: $color-default-white;
+        color: $color-default-black;
+        opacity: 60%;
+        transition: 0.3s;
+    }
+
+    @include vp-768 {
+        color: $color-default-black;
+        border: 1px solid $color-default-black;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $color-default-black;
+            background-color: $color-default-black;
+            color: $color-default-white;
+            opacity: 60%;
+            transition: 0.3s;
+        }
+    }
+
+    @each $property, $value in $font-button {
+        #{$property}: $value;
+    }
+
+    text-align: center;
+    transition: 0.3s;
+}
+
+.hero-content__button--dark {
+    @include vp-768 {
+        border-color: $color-default-black;
+        background-color: $color-default-black;
+        color: $color-default-white;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $color-default-black;
+            background-color: $color-default-black;
+            color: $color-default-white;
+            opacity: 70%;
+            transition: 0.3s;
+        }
+    }
+}
+
+.hero-content__link {
+    display: none;
+
+    @each $property, $value in $font-link {
+        #{$property}: $value;
+    }
+
+    @include vp-768 {
+        margin-top: 30px;
+        display: block;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 60%;
+    }
+
+    position: relative;
+    width: max-content;
+
+    svg {
+        position: absolute;
+        right: -40px;
+        top: 3px;
+    }
+}
+
+.hero-slider {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    min-height: 700px;
+
+    @include vp-768 {
+        min-height: unset;
+    }
+}
+
+.hero-slider__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-slider__navigation {
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    color: $color-default-white;
+    width: 100%;
+    padding: 0 22px;
+
+    @include vp-768 {
+        bottom: 20px;
+        padding: 0;
+    }
+}
+
+.hero-slider__arrow {
+    border: none;
+    background-color: transparent;
+    color: $color-default-white;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+        fill: $color-default-white;
+    }
+
+    cursor: pointer;
+    position: relative;
+
+    &:first-child {
+        margin-inline-end: 20px;
+    }
+
+    &:first-child::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(100% + 10px);
+        width: 1px;
+        height: 100%;
+        background-color: $color-default-white;
+    }
+}
+
+.hero-slider__slide-image {
+    height: 100%;
+    filter: brightness(30%);
+
+    @include vp-768 {
+        filter: brightness(85%);
+    }
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        margin: 0;
+    }
+}
