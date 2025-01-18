@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     '../img/main-slider/slide-3.jpg',
     '../img/projects/project-1/1-min.jpg',
     '../img/projects/project-1/2-min.jpg',
-    '../img/projects/project-1/3-min.jpg',
+    // '../img/projects/project-1/3-min.jpg',
     '../img/projects/project-2/1-min.jpg',
     '../img/projects/project-2/2-min.jpg',
     '../img/projects/project-2/3-min.jpg',
