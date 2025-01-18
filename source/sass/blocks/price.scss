@@ -35,6 +35,8 @@
 
 .price__title-number {
     white-space: nowrap;
+    text-align: center;
+    font-weight: 700 !important;
 
     @each $property, $value in $font-decoration-2 {
         #{$property}: $value;
@@ -48,7 +50,17 @@
 }
 
 .price__title {
+    text-align: center;
     margin: 8px 0;
+    @each $property, $value in $font-description {
+        #{$property}: $value;
+    }
+    line-height: 20px;
+
+    @include vp-1024 {
+        text-align: left;
+    }
+    
 }
 
 .price__img {

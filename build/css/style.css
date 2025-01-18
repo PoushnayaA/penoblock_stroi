@@ -1535,13 +1535,12 @@ html {
   position: absolute;
   z-index: 2;
   padding: 22px;
-  max-width: 70%;
+  max-width: 100%;
 }
 @media (min-width: 768px) {
   .hero-content {
     position: relative;
     padding: 0;
-    max-width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1561,6 +1560,8 @@ html {
   font-size: 40px;
   font-weight: 700;
   line-height: 52px;
+  font-size: 28px;
+  line-height: 37px;
   color: #ffffff;
 }
 @media (min-width: 768px) {
@@ -1574,11 +1575,18 @@ html {
   font-size: 16px;
   font-weight: 400;
   line-height: 25px;
+  font-size: 14px;
+  line-height: 20px;
   color: #ffffff;
+  margin-top: 8px;
 }
 @media (min-width: 768px) {
   .hero-content__text {
     color: #000000;
+    font-family: "Exo2", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
   }
 }
 
@@ -1713,7 +1721,7 @@ html {
   width: 100%;
   position: relative;
   height: 100%;
-  min-height: 700px;
+  min-height: 550px;
 }
 @media (min-width: 768px) {
   .hero-slider {
@@ -2146,22 +2154,35 @@ html {
 
 .price__title-number {
   white-space: nowrap;
+  text-align: center;
+  font-weight: 700 !important;
   font-family: "Exo2", "Arial", sans-serif;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 44px;
+  line-height: 26px;
 }
 @media (min-width: 1024px) {
   .price__title-number {
     font-family: "Exo2", "Arial", sans-serif;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 400;
-    line-height: 44px;
+    line-height: 30px;
   }
 }
 
 .price__title {
+  text-align: center;
   margin: 8px 0;
+  font-family: "Exo2", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  line-height: 20px;
+}
+@media (min-width: 1024px) {
+  .price__title {
+    text-align: left;
+  }
 }
 
 .price__img {

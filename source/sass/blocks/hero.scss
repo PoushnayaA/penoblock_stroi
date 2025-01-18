@@ -15,14 +15,13 @@
     position: absolute;
     z-index: 2;
     padding: 22px;
-    max-width: 70%;
+    max-width: 100%;
 
 
 
     @include vp-768 {
         position: relative;
         padding: 0;
-        max-width: 100%;
 
         display: flex;
         flex-direction: column;
@@ -36,6 +35,8 @@
     @each $property, $value in $font-header {
         #{$property}: $value;
     }
+    font-size: 28px;
+    line-height: 37px;
 
     color: $color-default-white;
 
@@ -48,11 +49,17 @@
     @each $property, $value in $font-description {
         #{$property}: $value;
     }
-
+    font-size: 14px;
+    line-height: 20px;
     color: $color-default-white;
+    margin-top: 8px;
 
     @include vp-768 {
+        
         color: $color-default-black;
+        @each $property, $value in $font-description {
+            #{$property}: $value;
+        }
     }
 }
 
@@ -178,7 +185,7 @@
     width: 100%;
     position: relative;
     height: 100%;
-    min-height: 700px;
+    min-height: 550px;
 
     @include vp-768 {
         min-height: unset;
