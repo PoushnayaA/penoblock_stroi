@@ -152,3 +152,25 @@
 html {
   scroll-behavior: smooth;
 }
+
+.error-page {
+  margin-top: 50px !important;
+  min-height: 50vh;
+  color: black !important;
+
+  .hero-content__title, .hero-content__text {
+    color: black !important;
+  }
+
+  .hero-content__button {
+    background-color: black;
+    margin: 20px 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white !important;
+    }
+  }
+}

@@ -1484,6 +1484,23 @@ html {
   scroll-behavior: smooth;
 }
 
+.error-page {
+  margin-top: 50px !important;
+  min-height: 50vh;
+  color: black !important;
+}
+.error-page .hero-content__title, .error-page .hero-content__text {
+  color: black !important;
+}
+.error-page .hero-content__button {
+  background-color: black;
+  margin: 20px 0;
+}
+.error-page .hero-content__button:hover, .error-page .hero-content__button:focus, .error-page .hero-content__button:active {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white !important;
+}
+
 .container {
   width: 100%;
   max-width: 1347px;
