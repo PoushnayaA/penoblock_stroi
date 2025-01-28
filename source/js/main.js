@@ -8,54 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   iosVhFix();
 
-  const images = [
-    '../img/main-slider/slide-1.jpg',
-    '../img/main-slider/slide-2.jpg',
-    '../img/main-slider/slide-3.jpg',
-    '../img/projects/project-1/1-min.jpg',
-    '../img/projects/project-1/2-min.jpg',
-    // '../img/projects/project-1/3-min.jpg',
-    '../img/projects/project-2/1-min.jpg',
-    '../img/projects/project-2/2-min.jpg',
-    '../img/projects/project-2/3-min.jpg',
-    '../img/projects/project-3/1-min.jpg',
-    '../img/projects/project-3/2-min.jpg',
-    '../img/projects/project-3/3-min.jpg',
-    '../img/projects/project-4/1-min.jpg',
-    '../img/projects/project-4/2-min.jpg',
-    '../img/projects/project-4/3-min.jpg',
-    '../img/projects/project-5/1-min.jpg',
-    '../img/projects/project-5/2-min.jpg',
-    '../img/projects/project-5/3-min.jpg',
-];
-
-// Функция для предварительной загрузки изображений
-function preloadImages(imageArray) {
-  return Promise.all(imageArray.map(src => {
-      return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = reject;
-      });
-  }));
-}
-
-// Предварительная загрузка изображений перед инициализацией Swiper
-preloadImages(images).then(() => {
-  // Все изображения загружены, инициализируем Swiper
-  new Swiper('.js-hero-slider', {
-      loop: true,
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-  });
-}).catch(error => {
-  console.error('Ошибка при загрузке изображений:', error);
-});
-
-
   new Swiper('.js-hero-slider', {
     loop: true,
     navigation: {
@@ -70,17 +22,17 @@ preloadImages(images).then(() => {
 
   const swipers = document.querySelectorAll('.js-results-swiper');
   swipers.forEach((swiperElement) => {
-      new Swiper(swiperElement, {
-          loop: true,
-          navigation: {
-            nextEl: swiperElement.querySelector('.swiper-button-next'),
-            prevEl: swiperElement.querySelector('.swiper-button-prev'),
-          },
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-      });
+    new Swiper(swiperElement, {
+      loop: true,
+      navigation: {
+        nextEl: swiperElement.querySelector('.swiper-button-next'),
+        prevEl: swiperElement.querySelector('.swiper-button-prev'),
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    });
   });
 
 
@@ -130,31 +82,63 @@ preloadImages(images).then(() => {
   window.addEventListener('load', () => {
     changeHeight(advantagesItems, false);
     changeHeight(headers, true);
-});
+  });
 
-window.addEventListener('resize', () => {
+  window.addEventListener('resize', () => {
     changeHeight(advantagesItems, false);
     changeHeight(headers, true);
-});
+  });
 
 
-const buttons = document.querySelectorAll('.tab-button');
-    const contents = document.querySelectorAll('.tab-content');
+  const buttons = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Удаляем активный класс у всех кнопок и контента
-            buttons.forEach(btn => btn.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Удаляем активный класс у всех кнопок и контента
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
 
-            // Добавляем активный класс к нажатой кнопке и соответствующему контенту
-            button.classList.add('active');
-            const tabId = button.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-        });
+      // Добавляем активный класс к нажатой кнопке и соответствующему контенту
+      button.classList.add('active');
+      const tabId = button.getAttribute('data-tab');
+      document.getElementById(tabId).classList.add('active');
     });
+  });
 
 
+  emailjs.init('CMQisLDrpcIk54EvP');
+  function sendEmail(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const templateParams = {
+      from_name: formData.get('name'),
+      from_phone: formData.get('phone'),
+    };
+
+    emailjs.send('service_nne40qw', 'ttemplate_u70e3xm', templateParams)
+      .then(function(response) {
+        console.log('Email sent successfully!', response.status, response.text);
+        form.reset();
+
+        // document.querySelector('.form__wrapper--default').style.height = '0';
+        // document.querySelector('.form__wrapper--default').style.opacity = '0';
+        // document.querySelector('.form__wrapper--default').style.transition = 'all 0.5s';
+        // document.querySelector('.form__wrapper--success').classList.remove('visually-hidden');
+
+      }, function(error) {
+        console.log('Error sending email:', error);
+
+      });
+  }
+
+
+  if (document.getElementById('my-form')) {
+    document.getElementById('my-form').addEventListener('submit', sendEmail);
+  }
 
 
 
