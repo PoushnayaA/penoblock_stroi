@@ -2,6 +2,7 @@ import { iosVhFix } from './utils/ios-vh-fix';
 import { initModals } from './modules/modals/init-modals';
 import { Form } from './modules/form-validate/form';
 import Swiper from './vendor/swiper';
+import emailjs from 'emailjs-com';
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -107,7 +108,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  emailjs.init('CMQisLDrpcIk54EvP');
+  emailjs.init('5PmWz66_umUsErIKy');
   function sendEmail(event) {
     event.preventDefault();
 
@@ -116,18 +117,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const templateParams = {
       from_name: formData.get('name'),
-      from_phone: formData.get('phone'),
+      from_email: formData.get('email'),
+      from_message: formData.get('message'),
     };
 
-    emailjs.send('service_nne40qw', 'ttemplate_u70e3xm', templateParams)
+    emailjs.send('service_mad1pwe', 'template_ezi20ms', templateParams)
       .then(function(response) {
         console.log('Email sent successfully!', response.status, response.text);
         form.reset();
 
-        // document.querySelector('.form__wrapper--default').style.height = '0';
-        // document.querySelector('.form__wrapper--default').style.opacity = '0';
-        // document.querySelector('.form__wrapper--default').style.transition = 'all 0.5s';
-        // document.querySelector('.form__wrapper--success').classList.remove('visually-hidden');
+        document.querySelector('.form__wrapper--default').style.height = '0';
+        document.querySelector('.form__wrapper--default').style.opacity = '0';
+        document.querySelector('.form__wrapper--default').style.transition = 'all 0.5s';
+        document.querySelector('.form__wrapper--success').classList.remove('visually-hidden');
+        document.getElementById('my-form').style.display = 'none';
 
       }, function(error) {
         console.log('Error sending email:', error);
@@ -135,10 +138,29 @@ window.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  const submitButton = document.querySelector('[type="submit"]');
+  submitButton.setAttribute('disabled', 'true');
+
 
   if (document.getElementById('my-form')) {
     document.getElementById('my-form').addEventListener('submit', sendEmail);
   }
+
+  document.getElementById('my-form').addEventListener('input', () => {
+    if (document.getElementById('name').value && document.getElementById('email').value && document.querySelector('[type="checkbox"]').checked) {
+      submitButton.removeAttribute('disabled');
+    } else {
+      submitButton.setAttribute('disabled', 'true');
+    }
+  })
+
+  document.querySelector('type="checkbox"').addEventListener('change', () => {
+    if (document.getElementById('name').value && document.getElementById('email').value && document.querySelector('[type="checkbox"]').checked) {
+      submitButton.removeAttribute('disabled');
+    } else {
+      submitButton.setAttribute('disabled', 'true');
+    }
+  })
 
 
 

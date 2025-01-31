@@ -770,21 +770,21 @@
             <span class="content__title-number">05</span>
             <h2 class="content__title">Связаться с нами</h2>
           </div>
-          <div class="form__wrapper">
+          <div class="form__wrapper form__wrapper--default">
             <div class="form__text-wrapper">
               <h3 class="form__title">Есть вопросы? Оставьте заявку!</h3>
               <p class="form__text">Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время и&nbsp;ответит на&nbsp;все
                 ваши вопросы.</p>
             </div>
             <div class="form__content">
-              <form action="https://echo.htmlacademy.ru/" method="get">
+              <form id="my-form">
                 <div class="form__field">
                   <label class="visually-hidden" for="name">Как к Вам обращаться?</label>
                   <input placeholder="Как к Вам обращаться?" type="text" id="name" name="name" required>
                 </div>
                 <div class="form__field">
-                  <label class="visually-hidden" for="email">E-mail</label>
-                  <input placeholder="E-mail" type="email" id="email" name="email" required>
+                  <label class="visually-hidden" for="email">E-mail или телефон</label>
+                  <input placeholder="E-mail или телефон" type="text" id="email" name="email" required>
                 </div>
                 <div class="form__field">
                   <label class="visually-hidden" for="message">Сообщение</label>
@@ -798,6 +798,11 @@
                 </div>
                 <button class="form__button result__link" type="submit">Заказать звонок</button>
               </form>
+            </div>
+          </div>
+          <div class="form__wrapper form__wrapper--success visually-hidden">
+            <div class="form__text-wrapper">
+              <h3 class="form__title">Спасибо! Скоро мы свяжемся с&nbsp;вами</h3>
             </div>
           </div>
         </div>

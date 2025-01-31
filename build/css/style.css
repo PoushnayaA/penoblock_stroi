@@ -2760,6 +2760,11 @@ html {
   transition: 500ms;
 }
 
+.form__button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 footer {
   background-color: #000000;
   color: #ffffff;
