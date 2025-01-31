@@ -142,20 +142,21 @@ window.addEventListener('DOMContentLoaded', () => {
   submitButton.setAttribute('disabled', 'true');
 
   const formEl = document.getElementById('my-form');
+  
   if (formEl) {
     formEl.addEventListener('submit', sendEmail);
   }
 
   formEl.addEventListener('input', () => {
-    if (formEl.getElementById('name').value && formEl.getElementById('email').value && formEl.querySelector('[type="checkbox"]').checked) {
+    if (formEl.querySelector('#name').value && formEl.querySelector('#email').value && formEl.querySelector('[type="checkbox"]').checked) {
       submitButton.removeAttribute('disabled');
     } else {
       submitButton.setAttribute('disabled', 'true');
     }
   })
 
-  document.querySelector('[type="checkbox"]').addEventListener('change', () => {
-    if (formEl.getElementById('name').value && formEl.getElementById('email').value && formEl.querySelector('[type="checkbox"]').checked) {
+  formEl.querySelector('[type="checkbox"]').addEventListener('change', () => {
+    if (formEl.querySelector('#name').value && formEl.querySelector('#email').value && formEl.querySelector('[type="checkbox"]').checked) {
       submitButton.removeAttribute('disabled');
     } else {
       submitButton.setAttribute('disabled', 'true');
