@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.form__wrapper--default').style.opacity = '0';
         document.querySelector('.form__wrapper--default').style.transition = 'all 0.5s';
         document.querySelector('.form__wrapper--success').classList.remove('visually-hidden');
-        document.getElementById('my-form').style.display = 'none';
+        formEl.style.display = 'none';
 
       }, function(error) {
         console.log('Error sending email:', error);
@@ -141,21 +141,21 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.querySelector('[type="submit"]');
   submitButton.setAttribute('disabled', 'true');
 
-
-  if (document.getElementById('my-form')) {
-    document.getElementById('my-form').addEventListener('submit', sendEmail);
+  const formEl = formEl;
+  if (formEl) {
+    formEl.addEventListener('submit', sendEmail);
   }
 
-  document.getElementById('my-form').addEventListener('input', () => {
-    if (document.getElementById('name').value && document.getElementById('email').value && document.querySelector('[type="checkbox"]').checked) {
+  formEl.addEventListener('input', () => {
+    if (formEl.getElementById('name').value && formEl.getElementById('email').value && formEl.querySelector('[type="checkbox"]').checked) {
       submitButton.removeAttribute('disabled');
     } else {
       submitButton.setAttribute('disabled', 'true');
     }
   })
 
-  document.querySelector('type="checkbox"').addEventListener('change', () => {
-    if (document.getElementById('name').value && document.getElementById('email').value && document.querySelector('[type="checkbox"]').checked) {
+  document.querySelector('[type="checkbox"]').addEventListener('change', () => {
+    if (formEl.getElementById('name').value && formEl.getElementById('email').value && formEl.querySelector('[type="checkbox"]').checked) {
       submitButton.removeAttribute('disabled');
     } else {
       submitButton.setAttribute('disabled', 'true');
