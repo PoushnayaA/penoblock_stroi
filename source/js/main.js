@@ -141,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.querySelector('[type="submit"]');
   submitButton.setAttribute('disabled', 'true');
 
-  const formEl = formEl;
+  const formEl = document.getElementById('my-form');
   if (formEl) {
     formEl.addEventListener('submit', sendEmail);
   }
