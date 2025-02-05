@@ -121,7 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
       from_message: formData.get('message'),
     };
 
-    emailjs.send('service_mad1pwe', 'template_ezi20ms', templateParams)
+    emailjs.send('service_v2zmitf', 'template_ezi20ms', templateParams)
       .then(function(response) {
         console.log('Email sent successfully!', response.status, response.text);
         form.reset();
