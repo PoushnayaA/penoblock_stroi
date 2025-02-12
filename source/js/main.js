@@ -93,6 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const buttons = document.querySelectorAll('.tab-button');
   const contents = document.querySelectorAll('.tab-content');
+  const nextButton = document.querySelector('.js-next-tab');
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -105,7 +106,33 @@ window.addEventListener('DOMContentLoaded', () => {
       const tabId = button.getAttribute('data-tab');
       document.getElementById(tabId).classList.add('active');
     });
+
+    document.querySelector('.js-next-tab').addEventListener('click', () => {
+      
+    })
   });
+
+  nextButton.addEventListener('click', () => {
+    for (let i=0; i<buttons.length; i++) {
+      if (buttons[i].classList.contains('active')) {
+        if (i == buttons.length - 1) {
+          buttons[i].classList.remove('active');
+          contents[i].classList.remove('active');
+          buttons[0].classList.add('active');
+          contents[0].classList.add('active');
+          return
+        } else {
+          buttons[i].classList.remove('active');
+          contents[i].classList.remove('active');
+          buttons[i+1].classList.add('active');
+          contents[i+1].classList.add('active');
+          return
+        }
+      }
+      document.getElementById('results').scrollIntoView({
+        behavior: 'smooth',});
+    }
+  })
 
 
   emailjs.init('5PmWz66_umUsErIKy');

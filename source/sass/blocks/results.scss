@@ -11,17 +11,6 @@
     @include vp-1024 {
         margin-top: 40px;
         justify-content: space-between;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0px;
-            height: 1.5px;
-            left: 0;
-            width: 100%;
-            background-color: $color-default-black-40;
-            z-index: 1;
-        }
     }
 
     position: relative;
@@ -29,14 +18,6 @@
 
 .tab-button {
     padding: 10px 10px;
-
-    &:first-child {
-        padding-left: 0;
-    }
-
-    &:last-child {
-        padding-right: 0;
-    }
 
     background-color: transparent;
     cursor: pointer;
@@ -113,7 +94,7 @@
 
     .hero-slider__slide-image {
         height: 100%;
-        filter: brightness(85%);
+        // filter: brightness(85%);
 
     }
 
@@ -249,5 +230,32 @@
     @include vp-1024 {
         margin-bottom: 0;
         margin-top: auto;
+    }
+}
+
+.result__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
+
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    display: block;
+
+    @each $property, $value in $font-link {
+        #{$property}: $value;
+    }
+    margin-top: 20px;
+    @include vp-768 {
+        margin-left: auto;
+        margin-top: 30px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 60%;
     }
 }
