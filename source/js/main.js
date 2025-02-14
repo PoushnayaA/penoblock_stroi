@@ -113,6 +113,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   nextButton.addEventListener('click', () => {
+    document.getElementById('results').scrollIntoView({
+      behavior: 'smooth',});
     for (let i=0; i<buttons.length; i++) {
       if (buttons[i].classList.contains('active')) {
         if (i == buttons.length - 1) {
@@ -129,8 +131,6 @@ window.addEventListener('DOMContentLoaded', () => {
           return
         }
       }
-      document.getElementById('results').scrollIntoView({
-        behavior: 'smooth',});
     }
   })
 
